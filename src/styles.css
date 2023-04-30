@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* html, body { height: 100%; } */
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+h1{
+  font-weight: 500;
+  font-size: x-large;
+}
+
+
+.button-style {
+  background: #103F23 !important;
+  color: white !important;
+}
+

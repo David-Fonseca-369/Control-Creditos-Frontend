@@ -1,0 +1,25 @@
+.mat-sidenav-container {
+  height: 100%;
+}
+
+.mat-sidenav {
+  height: 100%;
+  min-height: 100vh;
+  position: fixed;
+  /* Para que el menú comience a fijarse después de la barra superior */
+  top: 64px; /* La barra superior de Material Design tiene una altura de 64px */
+  left: 0; /* El menú lateral estará en la parte izquierda, para que se posicione en esa parte  */
+  width: 15rem;
+}
+
+.main-content {
+  height: 100%;
+  min-height: calc(100vh - 64px); /* La barra superior de Material Design tiene una altura de 64px */
+}
+
+.container{
+  margin: 1rem;
+}
+mat-sidenav-content{
+  background-color: white;
+}
