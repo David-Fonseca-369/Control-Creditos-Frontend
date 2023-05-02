@@ -8,7 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatTableModule } from "@angular/material/table";
 
 
 @NgModule({
@@ -22,14 +23,16 @@ import { MatInputModule } from '@angular/material/input';
     MatListModule,
     MatDialogModule,
     MatInputModule,
+    MatPaginatorModule,
+    MatTableModule
 
   ],
   imports: [CommonModule],
-  // providers: [
-  //   {
-  //     // provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-  //     // useValue: { appearance: 'outline'},
-  //   },
-  // ]
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline'},
+    },
+  ]
 })
 export class MaterialModule {}

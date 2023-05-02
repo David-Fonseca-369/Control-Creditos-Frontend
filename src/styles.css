@@ -1,18 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* html, body { height: 100%; } */
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-
-
-h1{
+h1 {
   font-weight: 500;
   font-size: x-large;
 }
 
-
 .button-style {
-  background: #103F23 !important;
+  background: #103f23 !important;
   color: white !important;
 }
 
+/* table, */
+
+.mat-row:nth-child(2n + 1) {
+  background-color: #DCE7E0 !important;
+}
+.mat-row:not(:nth-child(2n + 1)) {
+  background-color: #ffffff !important;
+}
+
+
+.mat-row:hover .mat-cell {
+  background: #f0f0f0;
+}
