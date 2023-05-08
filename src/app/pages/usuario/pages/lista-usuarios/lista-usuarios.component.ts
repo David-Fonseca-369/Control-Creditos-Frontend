@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/pages/usuarios.service';
 import { UsuarioDTO } from '../../models/usuario';
 import { HttpResponse } from '@angular/common/http';
-import { parsearErroresAPI } from 'src/helpers/helpers';
+import { parsearErroresAPI } from 'src/app/helpers/helpers';
 import { PageEvent } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { CrearUsuarioDialogComponent } from '../crear-usuario-dialog/crear-usuario-dialog.component';
 
 @Component({
   selector: 'app-lista-usuarios',
@@ -19,11 +21,17 @@ export class ListaUsuariosComponent implements OnInit {
   cantidadTotalRegistros;
   paginaActual = 1;
   cantidadRegistrosAMostrar = 10;
-  errores : string[] = [];
+  errores: string[] = [];
 
-  constructor(private usuariosService: UsuariosService) {}
+  constructor(
+    private usuariosService: UsuariosService,
+    private dialog: MatDialog
+  ) {}
   ngOnInit(): void {
-    this.obtenerUsuariosPaginacion(this.paginaActual, this.cantidadRegistrosAMostrar);
+    this.obtenerUsuariosPaginacion(
+      this.paginaActual,
+      this.cantidadRegistrosAMostrar
+    );
   }
 
   obtenerUsuariosPaginacion(pagina: number, cantidadRegistrosAMostrar: number) {
@@ -56,5 +64,15 @@ export class ListaUsuariosComponent implements OnInit {
       this.paginaActual,
       this.cantidadRegistrosAMostrar
     );
+  }
+
+  openCrearUsuario() {
+    const dialogRef = this.dialog.open(CrearUsuarioDialogComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+
+      if (result) {
+        this.obtenerUsuariosPaginacion(this.paginaActual, this.cantidadRegistrosAMostrar);
+      }
+    });
   }
 }

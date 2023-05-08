@@ -30,4 +30,3 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-

@@ -10,7 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatTableModule } from "@angular/material/table";
-
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
   declarations: [],
@@ -24,7 +24,8 @@ import { MatTableModule } from "@angular/material/table";
     MatDialogModule,
     MatInputModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
 
   ],
   imports: [CommonModule],

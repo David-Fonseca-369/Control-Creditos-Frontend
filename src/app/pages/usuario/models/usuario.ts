@@ -9,3 +9,16 @@ export interface UsuarioDTO{
   estado : boolean;
 
 }
+
+
+export interface UsuarioCreacionDTO{
+  idRol : number;
+  nombre : string;
+  apellidoPaterno : string;
+  apellidoMaterno : string;
+  telefono : string;
+  correo : string;
+  direccion : string;
+  password : string;
+
+}

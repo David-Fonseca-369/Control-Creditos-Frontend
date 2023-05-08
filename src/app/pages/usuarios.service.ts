@@ -2,17 +2,15 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { UsuarioDTO } from './usuario/models/usuario';
+import { UsuarioCreacionDTO, UsuarioDTO } from './usuario/models/usuario';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsuariosService {
-
   private apiURL = environment.apiURL + 'usuarios';
 
-
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public todosPaginacion(
     pagina: number,
@@ -31,4 +29,7 @@ export class UsuariosService {
     });
   }
 
+  public crear(usuario: UsuarioCreacionDTO): Observable<any> {
+    return this.http.post(`${this.apiURL}/crear`, usuario);
+  }
 }

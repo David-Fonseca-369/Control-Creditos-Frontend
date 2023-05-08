@@ -1,0 +1,20 @@
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 1px;
+  right: 0;
+  background: transparent;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+/* Cambiar color de spinner */
+:host /deep/.mat-progress-spinner circle, .mat-spinner circle {stroke: #659478; }
+
+
+.progress{
+  cursor: progress;
+}

@@ -23,3 +23,30 @@
 mat-sidenav-content{
   background-color: white;
 }
+
+
+
+/* color focus de borde */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick{
+  color: #103f23 !important
+}
+
+/* Color focus del label pequeño */
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #103f23 !important;
+}
+
+
+/* Invlalid  */
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+color: red !important;
+}
+
+::ng-deep .mat-form-field-invalid .mat-input-element, ::ng-deep .mat-warn .mat-input-element {
+caret-color: red !important;
+}
+
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+color: red !important;
+}
+
