@@ -10,9 +10,10 @@ import { CrearUsuarioDialogComponent } from './pages/crear-usuario-dialog/crear-
 //Formularios Reactivos
 //Binding de doble via
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UsuarioEditarDialogComponent } from './pages/usuario-editar-dialog/usuario-editar-dialog.component';
 
 @NgModule({
-  declarations: [ListaUsuariosComponent, CrearUsuarioDialogComponent],
+  declarations: [ListaUsuariosComponent, CrearUsuarioDialogComponent, UsuarioEditarDialogComponent],
   imports: [CommonModule, UsuarioRoutingModule, MaterialModule, SpinnerModule,
   ReactiveFormsModule, FormsModule],
 })

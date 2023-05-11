@@ -6,6 +6,7 @@ import { parsearErroresAPI } from 'src/app/helpers/helpers';
 import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { CrearUsuarioDialogComponent } from '../crear-usuario-dialog/crear-usuario-dialog.component';
+import { UsuarioEditarDialogComponent } from '../usuario-editar-dialog/usuario-editar-dialog.component';
 
 @Component({
   selector: 'app-lista-usuarios',
@@ -15,7 +16,7 @@ import { CrearUsuarioDialogComponent } from '../crear-usuario-dialog/crear-usuar
 export class ListaUsuariosComponent implements OnInit {
   isLoading = true;
   usuarios: UsuarioDTO[];
-  columnasAMostrar = ['nombre', 'nombreRol', 'correo', 'estado', 'opciones'];
+  columnasAMostrar = ['nombre', 'nombreRol', 'correo', 'estado'];
 
   //Pagination
   cantidadTotalRegistros;
@@ -69,10 +70,22 @@ export class ListaUsuariosComponent implements OnInit {
   openCrearUsuario() {
     const dialogRef = this.dialog.open(CrearUsuarioDialogComponent);
     dialogRef.afterClosed().subscribe((result) => {
-
       if (result) {
-        this.obtenerUsuariosPaginacion(this.paginaActual, this.cantidadRegistrosAMostrar);
+        this.obtenerUsuariosPaginacion(
+          this.paginaActual,
+          this.cantidadRegistrosAMostrar
+        );
       }
     });
+  }
+
+  openEditarUsuarioDialog(id: number) {
+    const dialogRef = this.dialog.open(UsuarioEditarDialogComponent, {
+      data: {
+        id: id,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 }
