@@ -1,17 +1,88 @@
-<h3>Lista de Alumnos</h3>
-<button
-  mat-flat-button
-  class="button-style"
-  style="background: #103f23; color: white"
-  (click)="openNuevoAlumno()"
+<app-spinner [isLoading]="isLoading"></app-spinner>
+<h1>Alumnos</h1>
+
+<div style="display: flex; justify-content: space-between; align-items: center">
+  <button
+    mat-flat-button
+    class="button-style"
+    (click)="openCrearAlumno()"
+    type="button"
+  >
+    Nuevo
+  </button>
+
+  <div>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <input matInput placeholder="Buscar alumno" formControlName="text" />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </form>
+  </div>
+</div>
+
+<table
+  #table
+  mat-table
+  [dataSource]="alumnos"
+  class="mat-elevation-z2 tabla-alumnos"
 >
-  Nuevo
-</button>
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+    <td mat-cell *matCellDef="let alumno">
+      {{
+        alumno.nombre +
+          " " +
+          alumno.apellidoPaterno +
+          " " +
+          alumno.apellidoMaterno
+      }}
+    </td>
+  </ng-container>
 
 
+  <ng-container matColumnDef="noCuenta">
+    <th mat-header-cell *matHeaderCellDef>No. Cuenta</th>
+    <td mat-cell *matCellDef="let alumno">
+      {{ alumno.noCuenta }}
+    </td>
+  </ng-container>
 
-<mat-form-field appearance="outline">
-  <mat-label >ssd</mat-label>
-  <input type="text" matInput>
-  <mat-error>sdsd</mat-error>
-</mat-form-field>
+  <ng-container matColumnDef="correo">
+    <th mat-header-cell *matHeaderCellDef>Correo</th>
+    <td mat-cell *matCellDef="let alumno">
+      {{ alumno.correo }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="estado">
+    <th mat-header-cell *matHeaderCellDef>Estado</th>
+    <td mat-cell *matCellDef="let alumno">
+      <mat-icon style="color: green" *ngIf="alumno.estado"
+        >check_circle</mat-icon
+      >
+      <mat-icon style="color: red" *ngIf="!alumno.estado">cancel</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnasAMostrar; sticky: true"></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: columnasAMostrar"
+    (click)="openEditarAlumno(row.id)"
+  ></tr>
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="8" style="color: red">
+      No se encontraron resultados.
+    </td>
+  </tr>
+</table>
+<mat-paginator
+  class="mat-elevation-z1"
+  [pageSizeOptions]="[5, 10, 20, 50]"
+  showFirstLastButtons
+  [length]="cantidadTotalRegistros"
+  [pageSize]="cantidadRegistrosAMostrar"
+  (page)="actualizarPaginacion($event)"
+>
+</mat-paginator>

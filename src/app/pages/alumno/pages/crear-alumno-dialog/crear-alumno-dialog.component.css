@@ -1,0 +1,13 @@
+.flex-inputs {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.flex-inputs mat-form-field {
+  width: 48%;
+}
+
+mat-form-field{
+  font-size: small;
+}
