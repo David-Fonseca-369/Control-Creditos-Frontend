@@ -5,7 +5,7 @@ import {
   obtenerErroresGenerico,
   parsearErroresAPI,
 } from 'src/app/helpers/helpers';
-import { UsuariosService } from 'src/app/pages/usuarios.service';
+import { UsuariosService } from 'src/app/pages/usuario/usuarios.service';
 import { RolSelectorDTO } from 'src/app/services/models/roles';
 import { RolesService } from 'src/app/services/roles.service';
 

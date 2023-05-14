@@ -1,1 +1,18 @@
-<h2 style="text-align: center;">Pagina de Inicio</h2>
+<h1 style="font-weight: 450; text-align: center">Bienvenido</h1>
+<h2 style="text-align: center; font-weight: 400">
+  Tecnológico de Estudios Superiores de San Felipe del Progreso
+</h2>
+
+<div class="carousel">
+  <carousel
+    [images]="imagenesCarousel"
+    [autoplay]="true"
+    [autoplayInterval]="2000"
+    [loop]="true"
+    [cellsToShow]="1"
+    [dots]="true"
+    [height]="350"
+    [borderRadius]="15"
+  >
+  </carousel>
+</div>

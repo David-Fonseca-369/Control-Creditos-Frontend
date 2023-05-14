@@ -1,0 +1,6 @@
+.carousel {
+  max-width: 60rem;
+  margin-right: auto;
+  margin-left: auto;
+  z-index: 1;
+}

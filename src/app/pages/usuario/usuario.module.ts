@@ -13,8 +13,18 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UsuarioEditarDialogComponent } from './pages/usuario-editar-dialog/usuario-editar-dialog.component';
 
 @NgModule({
-  declarations: [ListaUsuariosComponent, CrearUsuarioDialogComponent, UsuarioEditarDialogComponent],
-  imports: [CommonModule, UsuarioRoutingModule, MaterialModule, SpinnerModule,
-  ReactiveFormsModule, FormsModule],
+  declarations: [
+    ListaUsuariosComponent,
+    CrearUsuarioDialogComponent,
+    UsuarioEditarDialogComponent,
+  ],
+  imports: [
+    CommonModule,
+    UsuarioRoutingModule,
+    MaterialModule,
+    SpinnerModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
 })
 export class UsuarioModule {}

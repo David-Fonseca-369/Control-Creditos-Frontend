@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuariosService } from 'src/app/pages/usuarios.service';
+import { UsuariosService } from 'src/app/pages/usuario/usuarios.service';
 import { UsuarioDTO } from '../../models/usuario';
 import { HttpResponse } from '@angular/common/http';
 import { parsearErroresAPI } from 'src/app/helpers/helpers';

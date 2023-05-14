@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { UsuariosService } from 'src/app/pages/usuarios.service';
+import { UsuariosService } from 'src/app/pages/usuario/usuarios.service';
 import {
   UsuarioDTO,
   UsuarioEditarDTO,

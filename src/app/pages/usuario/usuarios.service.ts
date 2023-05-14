@@ -7,7 +7,7 @@ import {
   UsuarioDTO,
   UsuarioEditarDTO,
   UsuarioPreviewDTO,
-} from './usuario/models/usuario';
+} from './models/usuario';
 
 @Injectable({
   providedIn: 'root',

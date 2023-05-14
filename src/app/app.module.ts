@@ -8,6 +8,9 @@ import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './header/header.component';
 import { MenuListComponent } from './menu-list/menu-list.component';
 
+
+
+
 //Formularios Reactivos
 //Binding de doble via
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -25,6 +28,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

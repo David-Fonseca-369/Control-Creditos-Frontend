@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { StaticRoutingModule } from './static-routing.module';
 import { HomePageComponent } from './home-page/home-page.component';
-
+//Carousel
+//npm i angular-responsive-carousel --force
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,8 @@ import { HomePageComponent } from './home-page/home-page.component';
   ],
   imports: [
     CommonModule,
-    StaticRoutingModule
+    StaticRoutingModule,
+    IvyCarouselModule
   ]
 })
 export class StaticModule { }
