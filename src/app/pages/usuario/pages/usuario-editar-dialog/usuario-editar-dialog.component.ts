@@ -1,7 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UsuariosService } from 'src/app/pages/usuarios.service';
-import { UsuarioDTO, UsuarioPreviewDTO } from '../../models/usuario';
+import {
+  UsuarioDTO,
+  UsuarioEditarDTO,
+  UsuarioPreviewDTO,
+} from '../../models/usuario';
 import {
   obtenerErroresGenerico,
   parsearErroresAPI,
@@ -44,7 +48,6 @@ export class UsuarioEditarDialogComponent implements OnInit {
         this.isLoading = false;
         this.usuario = response;
         this.form.patchValue(response);
-        console.log(response);
       },
       error: (error) => {
         this.isLoading = false;
@@ -88,10 +91,37 @@ export class UsuarioEditarDialogComponent implements OnInit {
       ],
       direccion: ['', Validators.maxLength(255)],
       password: ['', [Validators.minLength(8), Validators.maxLength(60)]],
+      estado: ['', Validators.required],
     });
   }
 
-  guardar() {}
+  guardar() {
+    let usuarioEditar: UsuarioEditarDTO = {
+      idRol: this.form.value.idRol,
+      nombre: this.form.value.nombre,
+      apellidoPaterno: this.form.value.apellidoPaterno,
+      apellidoMaterno: this.form.value.apellidoMaterno,
+      telefono: this.form.value.telefono,
+      correo: this.form.value.correo,
+      direccion: this.form.value.direccion,
+      password:
+        this.form.value.password == '' ? null : this.form.value.password,
+      estado: this.form.value.estado,
+    };
+
+    this.isLoading = true;
+
+    this.usuariosService.editar(this.data.id, usuarioEditar).subscribe({
+      next: () => {
+        this.isLoading = false;
+        this.dialogRef.close(true);
+      },
+      error: (error) => {
+        this.isLoading = false;
+        this.errores = parsearErroresAPI(error);
+      },
+    });
+  }
 
   obtenerErrorGenerico(
     nombreCampo: string,

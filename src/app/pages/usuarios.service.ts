@@ -34,7 +34,16 @@ export class UsuariosService {
     });
   }
 
-  public get(id : number) : Observable<UsuarioPreviewDTO>{
+  public filtrar(values: any): Observable<any> {
+    const params = new HttpParams({ fromObject: values });
+
+    return this.http.get<UsuarioDTO[]>(`${this.apiURL}/filtrar`, {
+      params,
+      observe: 'response',
+    });
+  }
+
+  public get(id: number): Observable<UsuarioPreviewDTO> {
     return this.http.get<UsuarioPreviewDTO>(`${this.apiURL}/${id}`);
   }
 
@@ -42,9 +51,7 @@ export class UsuariosService {
     return this.http.post(`${this.apiURL}/crear`, usuario);
   }
 
-  public editar(id : number, usuario: UsuarioEditarDTO): Observable<any> {
+  public editar(id: number, usuario: UsuarioEditarDTO): Observable<any> {
     return this.http.put(`${this.apiURL}/editar/${id}`, usuario);
   }
-
-
 }

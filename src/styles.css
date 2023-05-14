@@ -19,7 +19,7 @@ h1 {
 /* table, */
 
 .mat-row:nth-child(2n + 1) {
-  background-color: #DCE7E0 !important;
+  background-color: #E7EFEA !important;
 }
 .mat-row:not(:nth-child(2n + 1)) {
   background-color: #ffffff !important;

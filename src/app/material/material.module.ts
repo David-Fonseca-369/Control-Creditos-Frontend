@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatTableModule } from "@angular/material/table";
 import { MatSelectModule } from "@angular/material/select";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [],
@@ -25,8 +26,8 @@ import { MatSelectModule } from "@angular/material/select";
     MatInputModule,
     MatPaginatorModule,
     MatTableModule,
-    MatSelectModule
-
+    MatSelectModule,
+    MatCheckboxModule
   ],
   imports: [CommonModule],
   providers: [

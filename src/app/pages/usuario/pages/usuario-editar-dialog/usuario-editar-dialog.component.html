@@ -108,7 +108,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Contraseña</mat-label>
+          <mat-label>Nueva Contraseña</mat-label>
           <input
             matInput
             [type]="hide ? 'password' : 'text'"
@@ -128,6 +128,16 @@
           }}</mat-error>
         </mat-form-field>
       </div>
+
+      <mat-checkbox formControlName="estado">
+        Activo
+      </mat-checkbox>
+
+
+      <p style=" font-size: small;">
+        Si está vacía la caja de texto de <b>Nueva contraseña</b>, no se
+        editará.
+      </p>
     </div>
   </form>
 </mat-dialog-content>

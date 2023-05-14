@@ -91,7 +91,6 @@ export class CrearUsuarioDialogComponent implements OnInit {
       next: () => {
         this.isLoading = false;
         this.dialogRef.close(true);
-        console.log("Agregado")
 
       },
       error: (error) => {
