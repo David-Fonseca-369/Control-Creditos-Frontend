@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { SecurityService } from '../security/security.service';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class HeaderComponent {
   @Output() menuToggle = new EventEmitter<void>();
 
+  constructor(public securityService : SecurityService){
+
+  }
   onMenuToggleDispatch() {
     this.menuToggle.emit();
   }

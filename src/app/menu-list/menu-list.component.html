@@ -2,13 +2,48 @@
   <a mat-list-item routerLink="/">
     <div class="item"><mat-icon>home</mat-icon> <span>Inicio</span></div>
   </a>
-  <a mat-list-item routerLink="alumnos/lista">
-    <div class="item"><mat-icon>groups</mat-icon> <span>Alumnos</span></div>
-  </a>
-  <a mat-list-item routerLink="usuarios/lista">
-    <div class="item"><mat-icon>group</mat-icon> <span>Usuarios</span></div>
-  </a>
-  <a mat-list-item routerLink="/">
-    <div class="item"><mat-icon>description</mat-icon> <span>Créditos</span></div>
-  </a>
+
+  <!-- Administrador -->
+  <app-authorized [rol]="'Administrador'">
+    <ng-container autorizado>
+      <a mat-list-item routerLink="alumnos/lista">
+        <div class="item"><mat-icon>groups</mat-icon> <span>Alumnos</span></div>
+      </a>
+      <a mat-list-item routerLink="usuarios/lista">
+        <div class="item"><mat-icon>group</mat-icon> <span>Usuarios</span></div>
+      </a>
+      <a mat-list-item routerLink="/">
+        <div class="item"><mat-icon>help</mat-icon> <span>Ayuda</span></div>
+      </a>
+    </ng-container>
+  </app-authorized>
+  <!-- Instructor -->
+  <app-authorized [rol]="'Instructor'">
+    <ng-container autorizado>
+      <a mat-list-item>
+        <div class="item"><mat-icon>groups</mat-icon> <span>Cursos</span></div>
+      </a>
+      <a mat-list-item>
+        <div class="item">
+          <mat-icon>group</mat-icon> <span>Solicitudes</span>
+        </div>
+      </a>
+      <a mat-list-item routerLink="/">
+        <div class="item"><mat-icon>help</mat-icon> <span>Ayuda</span></div>
+      </a>
+    </ng-container>
+  </app-authorized>
+
+  <app-authorized>
+    <ng-container noAutorizado>
+      <a mat-list-item routerLink="/login">
+        <div class="item">
+          <mat-icon>help</mat-icon> <span>Iniciar Sesión</span>
+        </div>
+      </a>
+      <a mat-list-item routerLink="/">
+        <div class="item"><mat-icon>help</mat-icon> <span>Ayuda</span></div>
+      </a>
+    </ng-container>
+  </app-authorized>
 </mat-nav-list>

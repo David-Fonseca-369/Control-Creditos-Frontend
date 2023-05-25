@@ -1,0 +1,54 @@
+<app-spinner [isLoading]="isLoading"></app-spinner>
+<form [formGroup]="form">
+  <div style="display: flex; justify-content: center" class="">
+    <div class="mat-elevation-z8 container">
+      <img src="../assets/images/logoTes.png" alt="Logo" />
+
+      <h1>Iniciar Sesión</h1>
+
+      <mat-form-field>
+        <mat-label> Correo </mat-label>
+        <input type="email" matInput formControlName="correo" />
+        <mat-error>
+          {{
+            obtenerErrorGenerico("correo", "Correo", undefined, 60)
+          }}</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <button mat-icon-button matSuffix (click)="hide = !hide" type="button">
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error>
+          {{
+            obtenerErrorGenerico("password", "Contraseña", 8, undefined)
+          }}</mat-error
+        >
+      </mat-form-field>
+
+      <div class="card">
+        <mat-checkbox color="primary" formControlName="remember" [(ngModel)]="isChecked"
+          >Recordarme
+        </mat-checkbox>
+      </div>
+      <button
+        [disabled]="form.invalid"
+        (click)="login()"
+        mat-flat-button
+
+        class="button-style"
+      >
+        Entrar
+      </button>
+
+      <app-mostrar-errores [errores]="errores"></app-mostrar-errores>
+    </div>
+  </div>
+</form>

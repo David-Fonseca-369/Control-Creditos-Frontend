@@ -6,7 +6,12 @@
   <span>TESSFP</span>
 
   <div class="spacer"></div>
-  <button mat-icon-button>
-    <mat-icon>logout</mat-icon>
-  </button>
+
+  <app-authorized>
+    <ng-container autorizado>
+      <button mat-icon-button (click)="securityService.cerrarSesion()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </ng-container>
+  </app-authorized>
 </mat-toolbar>

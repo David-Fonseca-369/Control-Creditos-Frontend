@@ -25,10 +25,15 @@ const routes: Routes = [
         pathMatch: 'full',
         redirectTo: 'static/home-page',
       },
+      {
+        path: 'login',
+        loadChildren: () =>
+          import('./pages/login/login.module').then((m) => m.LoginModule),
+      },
     ],
   },
 
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({
