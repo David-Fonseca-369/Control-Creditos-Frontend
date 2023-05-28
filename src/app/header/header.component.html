@@ -9,8 +9,17 @@
 
   <app-authorized>
     <ng-container autorizado>
-      <button mat-icon-button (click)="securityService.cerrarSesion()">
-        <mat-icon>logout</mat-icon>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+        &nbsp;
+        <span>{{ getNombre() }}</span>
+
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="securityService.cerrarSesion()">
+            <mat-icon style="color: red">logout</mat-icon>
+            <span style="color: red">Cerrar Sesión </span>
+          </button>
+        </mat-menu>
       </button>
     </ng-container>
   </app-authorized>

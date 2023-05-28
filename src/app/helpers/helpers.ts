@@ -1,4 +1,12 @@
-import { FormGroup } from "@angular/forms";
+import { FormGroup } from '@angular/forms';
+import {
+  ActivatedRouteSnapshot,
+  CanActivateFn,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
+import { SecurityService } from '../security/security.service';
+import { inject } from '@angular/core';
 
 export function parsearErroresAPI(response: any): string[] {
   const resultado: string[] = [];
@@ -25,7 +33,6 @@ export function parsearErroresAPI(response: any): string[] {
   return resultado;
 }
 
-
 //Validador de errores genérico
 export function obtenerErroresGenerico(
   nombreCampo: string,
@@ -33,11 +40,8 @@ export function obtenerErroresGenerico(
   form: FormGroup,
   minLength?: number,
   maxLength?: number
-
 ): string {
   const campo = form.get(nombreCampo);
-
-
 
   if (campo.hasError('required')) {
     return `El campo ${nombreMostrar} es requerido.`;
@@ -65,3 +69,32 @@ export function obtenerErroresGenerico(
 
   return '';
 }
+
+export function esAdminGuard(): CanActivateFn {
+  return () => {
+    const oauthService: SecurityService = inject(SecurityService);
+    const router: Router = inject(Router);
+
+    if (oauthService.obtenerRol() === 'Administrador') {
+      return true;
+    }
+
+    this.router.navigate(['login']);
+    return false;
+  };
+}
+
+export const isUserAdminGuard = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+) => {
+  const auth = inject(SecurityService);
+  const router = inject(Router);
+
+  if (auth.obtenerRol() === 'Administrador') {
+    return true;
+  } else {
+    router.navigate(['login']);
+    return false;
+  }
+};

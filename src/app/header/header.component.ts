@@ -15,4 +15,13 @@ export class HeaderComponent {
   onMenuToggleDispatch() {
     this.menuToggle.emit();
   }
+
+
+  getNombre(): string {
+    let nombre = localStorage.getItem('nombre');
+    let apellidoPaterno = localStorage.getItem('apellidoPaterno');
+    let apellidoMaterno = localStorage.getItem('apellidoMaterno');
+
+    return `${nombre} ${apellidoPaterno} ${apellidoMaterno}`;
+  }
 }

@@ -50,23 +50,6 @@ export class LoginComponent {
 
         this.isRemember();
         this.router.navigate(['/static/home-page']);
-        // if (this.securityService.obtenerCampoJWT('rol') === 'Administrador') {
-        //   this.router.navigate(['/alumnos']);
-        // }
-
-        // if (this.securityService.obtenerCampoJWT('rol') === 'Docente') {
-        //   this.router.navigate(['/materias-asignadas']);
-        // }
-
-
-        // if (this.securityService.obtenerCampoJWT('rol') === 'Alumno') {
-        //   this.router.navigate(['/inicio']);
-        // }
-
-
-        // if (this.securityService.obtenerCampoJWT('rol') === 'Cajero') {
-        //   this.router.navigate(['/pagos-docente']);
-        // }
       },
       error: (error) => {
         this.isLoading = false;

@@ -34,19 +34,22 @@
       </mat-form-field>
 
       <div class="card">
-        <mat-checkbox color="primary" formControlName="remember" [(ngModel)]="isChecked"
+        <mat-checkbox
+          color="primary"
+          formControlName="remember"
+          [(ngModel)]="isChecked"
           >Recordarme
         </mat-checkbox>
       </div>
-      <button
-        [disabled]="form.invalid"
-        (click)="login()"
-        mat-flat-button
+        <button
+          [disabled]="form.invalid"
+          (click)="login()"
+          mat-flat-button
+          class="button-login"
+        >
+          Entrar
+        </button>
 
-        class="button-style"
-      >
-        Entrar
-      </button>
 
       <app-mostrar-errores [errores]="errores"></app-mostrar-errores>
     </div>
