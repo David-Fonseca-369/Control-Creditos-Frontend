@@ -20,6 +20,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 //Para consumir APIs
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthorizedComponent } from './security/authorized/authorized.component';
+import { SecurityInterceptorService } from './security/security-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,14 @@ import { AuthorizedComponent } from './security/authorized/authorized.component'
     HttpClientModule,
     SweetAlert2Module,
   ],
-  providers: [],
+  providers: [
+    //Declaro el HttpInterceptor
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SecurityInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

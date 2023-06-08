@@ -9,6 +9,9 @@ import { Observable } from 'rxjs';
 export class SecurityInterceptorService implements HttpInterceptor{
 
   constructor(private securityService : SecurityService) { }
+
+  //si tienen un token, clona la solicitud e intercepta el token
+  //** Se declara en providers */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const token = this.securityService.obtenerToken();

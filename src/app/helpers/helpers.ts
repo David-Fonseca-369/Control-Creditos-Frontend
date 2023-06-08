@@ -70,31 +70,4 @@ export function obtenerErroresGenerico(
   return '';
 }
 
-export function esAdminGuard(): CanActivateFn {
-  return () => {
-    const oauthService: SecurityService = inject(SecurityService);
-    const router: Router = inject(Router);
 
-    if (oauthService.obtenerRol() === 'Administrador') {
-      return true;
-    }
-
-    this.router.navigate(['login']);
-    return false;
-  };
-}
-
-export const isUserAdminGuard = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-) => {
-  const auth = inject(SecurityService);
-  const router = inject(Router);
-
-  if (auth.obtenerRol() === 'Administrador') {
-    return true;
-  } else {
-    router.navigate(['login']);
-    return false;
-  }
-};
