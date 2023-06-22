@@ -6,6 +6,7 @@ import {
   obtenerErroresGenerico,
   parsearErroresAPI,
 } from 'src/app/helpers/helpers';
+import { NotifyService } from 'src/app/services/notify.service';
 
 @Component({
   selector: 'app-crear-alumno-dialog',
@@ -21,7 +22,8 @@ export class CrearAlumnoDialogComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private alumnosService: AlumnosService,
-    private dialogRef: MatDialogRef<CrearAlumnoDialogComponent>
+    private dialogRef: MatDialogRef<CrearAlumnoDialogComponent>,
+    private notify : NotifyService
   ) {}
 
   ngOnInit(): void {
@@ -78,6 +80,7 @@ export class CrearAlumnoDialogComponent implements OnInit {
     this.alumnosService.crear(this.form.value).subscribe({
       next: () => {
         this.isLoading = false;
+        this.notify.successfulNotification('¡Creado!');
         this.dialogRef.close(true);
       },
       error: (error) => {

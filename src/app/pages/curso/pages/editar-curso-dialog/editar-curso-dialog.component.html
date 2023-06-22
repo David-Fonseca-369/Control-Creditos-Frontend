@@ -1,0 +1,103 @@
+<app-spinner [isLoading]="isLoading"></app-spinner>
+
+<h2 matDialogTitle>Editar Curso</h2>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <app-input-img
+      [title]="'Seleccionar Fondo'"
+      (archivoSeleccionado)="archivoSeleccionado($event)"
+      [urlImagenActual]="curso?.fondoURL"
+    ></app-input-img>
+
+    <div>
+      <mat-form-field style="width: 100%">
+        <mat-label>Nombre</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Ingrese un nombre"
+          formControlName="nombre"
+        />
+        <mat-error>{{
+          obtenerErrorGenerico("nombre", "Nombre", undefined, 60)
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%">
+        <mat-label>Descripción</mat-label>
+        <textarea
+          type="text"
+          matInput
+          placeholder="Descripción"
+          formControlName="descripcion"
+        >
+        </textarea>
+        <mat-error>{{
+          obtenerErrorGenerico(
+            "descripcion",
+            "Descripción",
+            undefined,
+            undefined
+          )
+        }}</mat-error>
+      </mat-form-field>
+
+      <div class="flex-inputs">
+        <mat-form-field>
+          <mat-label>Periodo</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input
+              matStartDate
+              formControlName="fechaInicio"
+              placeholder="Inicio"
+            />
+            <input matEndDate formControlName="fechaFin" placeholder="Fin" />
+          </mat-date-range-input>
+          <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Limite Estudiantes</mat-label>
+          <input
+            type="number"
+            matInput
+            placeholder="Limite de estudiantes"
+            formControlName="limiteEstudiantes"
+          />
+          <mat-error> </mat-error>
+        </mat-form-field>
+      </div>
+      <hr />
+      <h3 style="font-weight: 400">Archivos Adjuntos</h3>
+      <app-input-file (selectedFile)="fileSelected($event)"> </app-input-file>
+      <div class="chips">
+        <mat-chip-list *ngFor="let file of archivosMostrar; let index = index">
+          <mat-chip>
+            {{ file?.nombre }}
+
+            <!-- solo se verá si es de servidor -->
+            <ng-container *ngIf="file.tipo == 1">
+              <a [href]="file.url" target="_blank"> Ver </a>
+            </ng-container>
+            <button matChipRemove="'remove'">
+              <mat-icon (click)="deleteConfirm(index)">cancel</mat-icon>
+            </button>
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+  </form>
+  <app-mostrar-errores [errores]="errores"></app-mostrar-errores>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-stroked-button [disabled]="form.invalid" (click)="guardar()">
+    Actualizar
+  </button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

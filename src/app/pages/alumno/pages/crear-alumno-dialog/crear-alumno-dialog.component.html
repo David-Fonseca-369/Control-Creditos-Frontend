@@ -55,8 +55,6 @@
       </div>
 
       <div class="flex-inputs">
-
-
         <mat-form-field>
           <mat-label>No. Cuenta</mat-label>
           <input
@@ -82,7 +80,6 @@
             obtenerErrorGenerico("telefono", "Teléfono", 10, 10)
           }}</mat-error>
         </mat-form-field>
-
       </div>
 
       <div class="flex-inputs">
@@ -125,9 +122,8 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [disabled]="form.invalid" (click)="guardar()">
+  <button mat-stroked-button [disabled]="form.invalid" (click)="guardar()">
     Crear
   </button>
+  <button mat-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>
-

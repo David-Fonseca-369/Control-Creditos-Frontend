@@ -1,0 +1,12 @@
+<div>
+  <button type="button" mat-stroked-button (click)="fileInput.click()">
+    <mat-icon>upload_file</mat-icon> Seleccionar Archivo
+  </button>
+  <input
+    type="file"
+    hidden
+    #fileInput
+    [accept]="this.filter"
+    (change)="change($event)"
+  />
+</div>

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { isAdminGuard } from './security/guards/guards';
-
+import { isAdminGuard, isInstructorGuard } from './security/guards/guards';
 
 const routes: Routes = [
   {
@@ -11,13 +10,18 @@ const routes: Routes = [
         path: 'alumnos',
         loadChildren: () =>
           import('./pages/alumno/alumno.module').then((m) => m.AlumnoModule),
-          canActivate:[isAdminGuard]
+        canActivate: [isAdminGuard],
       },
       {
         path: 'usuarios',
         loadChildren: () =>
           import('./pages/usuario/usuario.module').then((m) => m.UsuarioModule),
-          canActivate: [isAdminGuard]
+        canActivate: [isAdminGuard],
+      },
+      {
+        path: 'cursos',
+        loadChildren: () =>
+          import('./pages/curso/curso.module').then((m) => m.CursoModule),
       },
       {
         path: 'static',

@@ -1,0 +1,23 @@
+<div>
+  <button
+    class="button-style"
+    type="button"
+    mat-button
+    (click)="fileInput.click()"
+  >
+   {{title}}
+  </button>
+
+  <!-- Este input se oculta para interactuar con el botón -->
+  <input type="file" hidden #fileInput (change)="change($event)" />
+</div>
+
+<div class="img-container">
+  <div *ngIf="imagenBase64">
+    <img [src]="imagenBase64" />
+  </div>
+  <!-- La imagen actual al editar -->
+  <div *ngIf="urlImagenActual">
+    <img [src]="urlImagenActual" />
+  </div>
+</div>

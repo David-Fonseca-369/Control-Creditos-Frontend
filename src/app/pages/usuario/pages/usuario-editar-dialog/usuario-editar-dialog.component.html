@@ -129,12 +129,9 @@
         </mat-form-field>
       </div>
 
-      <mat-checkbox formControlName="estado">
-        Activo
-      </mat-checkbox>
+      <mat-checkbox formControlName="estado"> Activo </mat-checkbox>
 
-
-      <p style=" font-size: small;">
+      <p style="font-size: small">
         Si está vacía la caja de texto de <b>Nueva contraseña</b>, no se
         editará.
       </p>
@@ -143,8 +140,8 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [disabled]="form.invalid" (click)="guardar()">
+  <button mat-stroked-button [disabled]="form.invalid" (click)="guardar()">
     Actualizar
   </button>
+  <button mat-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>

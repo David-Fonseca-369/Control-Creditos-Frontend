@@ -1,0 +1,39 @@
+<h1>Cursos</h1>
+<div>
+  <div class="container">
+    <div class="cards" *ngFor="let curso of cursosPublicos">
+      <div class="card-item">
+        <div class="card-image">
+          <img [src]="curso.fondoURL" alt="" />
+        </div>
+        <div class="card-info">
+          <h2 class="card-title">{{ curso.nombre }}</h2>
+          <p class="card-intro">
+            {{ curso.descripcion }}
+          </p>
+          <div>
+            <p style="display: flex; color: grey">
+              <mat-icon style="margin-right: 0.5rem">person</mat-icon>
+              <span> {{ curso.nombreInstructor }}</span>
+            </p>
+            <p style="display: flex; color: grey">
+              <mat-icon style="margin-right: 0.5rem">schedule</mat-icon>
+              <span>
+                {{ curso.fechaInicio | date : "dd-MM-yy" }} -
+                {{ curso.fechaFin | date : "dd-MM-yy" }}
+              </span>
+            </p>
+            <p style="display: flex; color: grey">
+              <mat-icon style="margin-right: 0.5rem">group</mat-icon>
+              <span> {{ curso.inscritos }}/{{ curso.limiteEstudiantes }}</span>
+            </p>
+
+            <div align="end">
+              <button mat-button>Ver Más<mat-icon>arrow_forward</mat-icon></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

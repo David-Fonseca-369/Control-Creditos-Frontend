@@ -7,6 +7,7 @@ import {
 } from 'src/app/helpers/helpers';
 import { UsuariosService } from 'src/app/pages/usuario/usuarios.service';
 import { RolSelectorDTO } from 'src/app/services/models/roles';
+import { NotifyService } from 'src/app/services/notify.service';
 import { RolesService } from 'src/app/services/roles.service';
 
 @Component({
@@ -24,7 +25,9 @@ export class CrearUsuarioDialogComponent implements OnInit {
     private formBuilder: FormBuilder,
     private rolesService: RolesService,
     private usuariosService: UsuariosService,
-    private dialogRef : MatDialogRef<CrearUsuarioDialogComponent>
+    private dialogRef : MatDialogRef<CrearUsuarioDialogComponent>,
+    private notify : NotifyService
+
   ) {}
 
   ngOnInit(): void {
@@ -90,6 +93,7 @@ export class CrearUsuarioDialogComponent implements OnInit {
     this.usuariosService.crear(this.form.value).subscribe({
       next: () => {
         this.isLoading = false;
+        this.notify.successfulNotification('¡Creado!')
         this.dialogRef.close(true);
 
       },

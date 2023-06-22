@@ -11,6 +11,7 @@ import {
   obtenerErroresGenerico,
   parsearErroresAPI,
 } from 'src/app/helpers/helpers';
+import { NotifyService } from 'src/app/services/notify.service';
 
 @Component({
   selector: 'app-editar-alumno-dialog',
@@ -28,7 +29,8 @@ export class EditarAlumnoDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
     private alumnosService: AlumnosService,
-    private dialogRef: MatDialogRef<EditarAlumnoDialogComponent>
+    private dialogRef: MatDialogRef<EditarAlumnoDialogComponent>,
+    private notify : NotifyService
   ) {}
 
   ngOnInit(): void {
@@ -93,6 +95,7 @@ export class EditarAlumnoDialogComponent implements OnInit {
     this.alumnosService.editar(this.data.id, usuarioEditar).subscribe({
       next: () => {
         this.isLoading = false;
+        this.notify.successfulNotification('¡Actualizado!')
         this.dialogRef.close(true);
       },
       error: (error) => {

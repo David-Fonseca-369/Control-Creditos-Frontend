@@ -20,7 +20,7 @@
   <!-- Instructor -->
   <app-authorized [rol]="'Instructor'">
     <ng-container autorizado>
-      <a mat-list-item>
+      <a mat-list-item routerLink="cursos/lista">
         <div class="item"><mat-icon>groups</mat-icon> <span>Cursos</span></div>
       </a>
       <a mat-list-item>
@@ -31,6 +31,24 @@
       <a mat-list-item routerLink="/">
         <div class="item"><mat-icon>help</mat-icon> <span>Ayuda</span></div>
       </a>
+    </ng-container>
+  </app-authorized>
+  
+  <!-- Alumno -->
+  <app-authorized [rol]="'Alumno'">
+    <ng-container autorizado>
+      <a mat-list-item routerLink="cursos/lista-cursos-disponibles">
+        <div class="item"><mat-icon>groups</mat-icon> <span>Cursos</span></div>
+      </a>
+      <a mat-list-item>
+        <div class="item">
+          <mat-icon>group</mat-icon> <span>Mis Solicitudes</span>
+        </div>
+      </a>
+      <a mat-list-item routerLink="/">
+        <div class="item"><mat-icon>help</mat-icon> <span>Ayuda</span></div>
+      </a>
+
     </ng-container>
   </app-authorized>
 

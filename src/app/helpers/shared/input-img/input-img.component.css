@@ -1,0 +1,14 @@
+button {
+  margin-bottom: 1rem;
+}
+
+img {
+  width: 360px;
+  height: 300px;
+}
+
+
+.img-container{
+  display: flex;
+  justify-content: center;
+}

@@ -30,4 +30,13 @@ h1 {
   background: #D0DFD5;
 }
 
+/* color de exitoso del stack bar */
+.red-stackbar {
+  background: #840000;
+}
+
+.green-stackbar {
+  background: #57986c;
+}
+
 

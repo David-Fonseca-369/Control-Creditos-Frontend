@@ -1,0 +1,13 @@
+<ng-container *ngIf="data.type == 'success'">
+  <div class="container">
+    <mat-icon>check</mat-icon>
+    <span>{{ data.text }}</span>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="data.type == 'error'">
+  <div class="container">
+    <mat-icon>error</mat-icon>
+    <span>{{ data.text }}</span>
+  </div>
+</ng-container>

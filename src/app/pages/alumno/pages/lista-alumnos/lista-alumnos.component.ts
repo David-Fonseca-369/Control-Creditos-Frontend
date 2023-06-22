@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AlumnoNuevoDialogComponent } from '../alumno-nuevo-dialog/alumno-nuevo-dialog.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AlumnosService } from '../../alumnos.service';
 import { AlumnoDTO } from '../../models/alumno';
@@ -41,9 +40,7 @@ export class ListaAlumnosComponent implements OnInit {
     this.obtenerAlumnos();
   }
 
-  openNuevoAlumno() {
-    this.dialog.open(AlumnoNuevoDialogComponent);
-  }
+
 
   subscribe() {
     this.formSubscription = this.form.valueChanges.subscribe((value) => {

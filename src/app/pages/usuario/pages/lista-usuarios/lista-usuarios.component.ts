@@ -9,6 +9,7 @@ import { CrearUsuarioDialogComponent } from '../crear-usuario-dialog/crear-usuar
 import { UsuarioEditarDialogComponent } from '../usuario-editar-dialog/usuario-editar-dialog.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { SecurityService } from 'src/app/security/security.service';
 
 @Component({
   selector: 'app-lista-usuarios',

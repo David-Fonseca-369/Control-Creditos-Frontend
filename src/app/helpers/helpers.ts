@@ -71,3 +71,37 @@ export function obtenerErroresGenerico(
 }
 
 
+export function toBase64(file: File){
+
+	//una "promise" en javascript es una funcion que va temrinar su ejecución en un futuro
+	//es decir que aunque no va a terminar inmeediatamente nos promete que eventualmente
+	//lo va a terminar y cuando termine se va a ejecutar la función
+	//..."resolve" para que trabaje con el resultado y un error en caso de que lo haya
+
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+
+		reader.readAsDataURL(file);
+		reader.onload = () => resolve(reader.result);
+		reader.onerror = (error) => reject(error);
+	})
+}
+
+export function formatearFecha(date: Date){
+	date = new Date(date);//a veces no viene con el formato esperado y este le vuelve a dar formato cuando viene del web-api.
+	const formato = new Intl.DateTimeFormat('en',{
+		year: 'numeric',
+		month: '2-digit',
+		day: '2-digit'
+	});
+
+	//se usan ',,'por que el mes es el primer elemnto de arreglo
+	//el día el tercer elemento y el año es el quinto.
+	const [
+		{value: month},,
+		{value: day},,
+		{value: year}
+	] = formato.formatToParts(date);
+
+	return `${year}-${month}-${day}`
+}

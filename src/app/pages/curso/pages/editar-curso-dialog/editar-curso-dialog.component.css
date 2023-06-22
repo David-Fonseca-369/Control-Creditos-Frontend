@@ -1,0 +1,21 @@
+.flex-inputs {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.flex-inputs mat-form-field {
+  width: 48%;
+}
+
+mat-dialog-content {
+  width: 600px;
+}
+
+.chips{
+  margin-top: 1rem;
+}
+
+.chips a{
+  margin-left: 1rem;
+}

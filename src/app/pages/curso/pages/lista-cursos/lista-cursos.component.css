@@ -1,0 +1,8 @@
+.tabla-cursos,
+mat-paginator {
+  width: 100%;
+}
+
+.tabla-cursos button {
+  margin-right: 1rem;
+}

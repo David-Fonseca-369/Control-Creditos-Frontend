@@ -14,6 +14,7 @@ import { RolSelectorDTO } from 'src/app/services/models/roles';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RolesService } from 'src/app/services/roles.service';
 import { finalize } from 'rxjs';
+import { NotifyService } from 'src/app/services/notify.service';
 
 @Component({
   selector: 'app-usuario-editar-dialog',
@@ -33,7 +34,8 @@ export class UsuarioEditarDialogComponent implements OnInit {
     private formBuilder: FormBuilder,
     private rolesService: RolesService,
     private usuariosService: UsuariosService,
-    private dialogRef: MatDialogRef<UsuarioEditarDialogComponent>
+    private dialogRef: MatDialogRef<UsuarioEditarDialogComponent>,
+    private notify: NotifyService
   ) {}
   ngOnInit(): void {
     this.loadForm();
@@ -114,6 +116,7 @@ export class UsuarioEditarDialogComponent implements OnInit {
     this.usuariosService.editar(this.data.id, usuarioEditar).subscribe({
       next: () => {
         this.isLoading = false;
+        this.notify.successfulNotification('¡Actualizado!');
         this.dialogRef.close(true);
       },
       error: (error) => {

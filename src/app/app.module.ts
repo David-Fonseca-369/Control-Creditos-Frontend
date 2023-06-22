@@ -21,6 +21,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthorizedComponent } from './security/authorized/authorized.component';
 import { SecurityInterceptorService } from './security/security-interceptor.service';
+import { NotifyComponent } from './notify/notify.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SecurityInterceptorService } from './security/security-interceptor.serv
     HeaderComponent,
     MenuListComponent,
     AuthorizedComponent,
+    NotifyComponent,
   ],
   imports: [
     BrowserModule,

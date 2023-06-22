@@ -24,7 +24,21 @@ export const isInstructorGuard = (
   const auth = inject(SecurityService);
   const router = inject(Router);
 
-  if (auth.obtenerRol() === 'Instrcutor') {
+  if (auth.obtenerRol() === 'Instructor') {
+    return true;
+  } else {
+    router.navigate(['login']);
+    return false;
+  }
+};
+export const isAlumnoGuard = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+) => {
+  const auth = inject(SecurityService);
+  const router = inject(Router);
+
+  if (auth.obtenerRol() === 'Alumno') {
     return true;
   } else {
     router.navigate(['login']);
