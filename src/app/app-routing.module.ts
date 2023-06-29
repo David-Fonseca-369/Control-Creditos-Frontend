@@ -24,6 +24,11 @@ const routes: Routes = [
           import('./pages/curso/curso.module').then((m) => m.CursoModule),
       },
       {
+        path: 'solicitudes',
+        loadChildren: () =>
+           import('./pages/solicitud/solicitud.module').then((m) => m.SolicitudModule),
+      },
+      {
         path: 'static',
         loadChildren: () =>
           import('./pages/static/static.module').then((m) => m.StaticModule),

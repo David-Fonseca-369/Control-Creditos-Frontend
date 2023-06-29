@@ -15,38 +15,36 @@ export interface CursoPreviewEditDTO {
   fechaFin: Date;
   limiteEstudiantes: number;
   fondoURL: string;
-  archivosCurso : ArchivoCursoDTO[];
+  archivosCurso: ArchivoCursoDTO[];
 }
 
-export interface  CursoCreacionDTO {
+export interface CursoCreacionDTO {
   nombre: string;
   descripcion: string;
   fechaInicio: Date;
   fechaFin: Date;
   limiteEstudiantes: number;
   fondo: File;
-  archivosAdjuntos : File[]
+  archivosAdjuntos: File[];
 }
 
-
-export interface ArchivoCursoDTO{
+export interface ArchivoCursoDTO {
   id: number;
-  idCurso : number;
-  archivoURL : string;
-  archivoNombre : string;  
+  idCurso: number;
+  archivoURL: string;
+  archivoNombre: string;
 }
 
-export interface CursoPublicoDTO{
-  id : number;
-  idCreador : number;
-  nombreInstructor : string;
+export interface CursoPublicoDTO {
+  id: number;
+  idCreador: number;
+  nombreInstructor: string;
   nombre: string;
-  descripcion : string;
-  fechaInicio : Date;
-  fechaFin : Date;
-  limiteEstudiantes : number;
-  inscritos : number;
-  fondoURL : string;
-
-
+  descripcion: string;
+  fechaInicio: Date;
+  fechaFin: Date;
+  limiteEstudiantes: number;
+  inscritos: number;
+  fondoURL: string;
+  solicitudEnviada : boolean;
 }

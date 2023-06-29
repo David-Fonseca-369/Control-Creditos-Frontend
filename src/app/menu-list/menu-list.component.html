@@ -23,7 +23,7 @@
       <a mat-list-item routerLink="cursos/lista">
         <div class="item"><mat-icon>groups</mat-icon> <span>Cursos</span></div>
       </a>
-      <a mat-list-item>
+      <a mat-list-item routerLink="solicitudes/lista-solicitudes-instructor">
         <div class="item">
           <mat-icon>group</mat-icon> <span>Solicitudes</span>
         </div>
@@ -33,14 +33,14 @@
       </a>
     </ng-container>
   </app-authorized>
-  
+
   <!-- Alumno -->
   <app-authorized [rol]="'Alumno'">
     <ng-container autorizado>
       <a mat-list-item routerLink="cursos/lista-cursos-disponibles">
         <div class="item"><mat-icon>groups</mat-icon> <span>Cursos</span></div>
       </a>
-      <a mat-list-item>
+      <a mat-list-item routerLink="solicitudes/lista-solicitudes-alumno">
         <div class="item">
           <mat-icon>group</mat-icon> <span>Mis Solicitudes</span>
         </div>

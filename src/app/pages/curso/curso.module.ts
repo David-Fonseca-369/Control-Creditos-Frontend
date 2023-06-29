@@ -12,6 +12,7 @@ import { MostrarErroresModule } from 'src/app/helpers/shared/mostrar-errores/mos
 import { EditarCursoDialogComponent } from './pages/editar-curso-dialog/editar-curso-dialog.component';
 import { InputFileModule } from 'src/app/helpers/shared/input-file/input-file.module';
 import { ListaCursosDisponiblesComponent } from './pages/lista-cursos-disponibles/lista-cursos-disponibles.component';
+import { DetallesCursoDialogComponent } from './pages/detalles-curso-dialog/detalles-curso-dialog.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ListaCursosDisponiblesComponent } from './pages/lista-cursos-disponible
     ListaCursosComponent,
     CrearCursoDialogComponent,
     EditarCursoDialogComponent,
-    ListaCursosDisponiblesComponent
+    ListaCursosDisponiblesComponent,
+    DetallesCursoDialogComponent
   ],
   imports: [
     CommonModule,

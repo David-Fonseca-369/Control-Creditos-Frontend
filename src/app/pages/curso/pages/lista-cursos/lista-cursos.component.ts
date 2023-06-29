@@ -117,7 +117,6 @@ export class ListaCursosComponent implements OnInit {
     });
   }
   openEditarCursoDialog(id: number) {
-    console.log(id);
     const dialogRef = this.dialog.open(EditarCursoDialogComponent, {
       data: {
         id: id,

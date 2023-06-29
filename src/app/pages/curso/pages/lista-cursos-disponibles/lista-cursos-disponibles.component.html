@@ -1,4 +1,5 @@
 <h1>Cursos</h1>
+<app-spinner [isLoading]="isLoading"></app-spinner>
 <div>
   <div class="container">
     <div class="cards" *ngFor="let curso of cursosPublicos">
@@ -12,6 +13,13 @@
             {{ curso.descripcion }}
           </p>
           <div>
+            <ng-container *ngIf="curso.solicitudEnviada">
+              <p style="display: flex; color: green">
+                <mat-icon style="margin-right: 0.5rem">outgoing_mail</mat-icon>
+                <span>Solicitud Enviada </span>
+              </p>
+            </ng-container>
+
             <p style="display: flex; color: grey">
               <mat-icon style="margin-right: 0.5rem">person</mat-icon>
               <span> {{ curso.nombreInstructor }}</span>
@@ -29,7 +37,9 @@
             </p>
 
             <div align="end">
-              <button mat-button>Ver Más<mat-icon>arrow_forward</mat-icon></button>
+              <button mat-button (click)="openDetallesCursoDialog(curso)">
+                Ver Más<mat-icon>arrow_forward</mat-icon>
+              </button>
             </div>
           </div>
         </div>
@@ -37,3 +47,4 @@
     </div>
   </div>
 </div>
+<app-mostrar-errores [errores]="errores"></app-mostrar-errores>

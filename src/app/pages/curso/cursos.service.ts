@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {
+  ArchivoCursoDTO,
   CursoCreacionDTO,
   CursoDTO,
   CursoPreviewEditDTO,
@@ -38,8 +39,9 @@ export class CursosService {
     );
   }
   public publicosPaginacion(
+    idAlumno: number,
     pagina: number,
-    cantidadRegistrosAMostrar: number,
+    cantidadRegistrosAMostrar: number
   ): Observable<any> {
     let params = new HttpParams();
     params = params.append('pagina', pagina.toString());
@@ -49,7 +51,7 @@ export class CursosService {
     );
 
     return this.http.get<CursoPublicoDTO[]>(
-      `${this.apiURL}/publicosPaginacion`,
+      `${this.apiURL}/publicosPaginacion/${idAlumno}`,
       {
         observe: 'response',
         params,
@@ -68,6 +70,12 @@ export class CursosService {
 
   public get(id: number): Observable<CursoPreviewEditDTO> {
     return this.http.get<CursoPreviewEditDTO>(`${this.apiURL}/${id}`);
+  }
+
+  public obtenerArchivosCurso(idCurso: number): Observable<ArchivoCursoDTO[]> {
+    return this.http.get<ArchivoCursoDTO[]>(
+      `${this.apiURL}/obtenerArchivosCurso/${idCurso}`
+    );
   }
 
   public crear(curso: CursoCreacionDTO) {
