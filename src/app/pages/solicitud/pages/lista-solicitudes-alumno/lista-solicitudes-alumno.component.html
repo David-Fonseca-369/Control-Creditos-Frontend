@@ -1,0 +1,85 @@
+<app-spinner [isLoading]="isLoading"></app-spinner>
+<h1>Mis Solicitudes</h1>
+<form [formGroup]="form">
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Buscar" formControlName="text" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+</form>
+<table
+  #table
+  mat-table
+  [dataSource]="solicitudes"
+  class="mat-elevation-z2 tabla"
+>
+  <ng-container matColumnDef="nombreCurso">
+    <th mat-header-cell *matHeaderCellDef>Nombre Curso</th>
+    <td mat-cell *matCellDef="let solicitud">
+      {{ solicitud.nombreCurso }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombreInstructor">
+    <th mat-header-cell *matHeaderCellDef>Nombre Instructor</th>
+    <td mat-cell *matCellDef="let solicitud">
+      {{ solicitud.nombreInstructor }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="estado">
+    <th mat-header-cell *matHeaderCellDef>Estado</th>
+    <td mat-cell *matCellDef="let solicitud">
+      <span style="color: orange" *ngIf="solicitud.estado === 0"
+        >Pendiente</span
+      >
+      <span style="color: #2c5373" *ngIf="solicitud.estado === 1"
+        >Aprobado</span
+      >
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fechaSolicitud">
+    <th mat-header-cell *matHeaderCellDef>Fecha Solicitud</th>
+    <td mat-cell *matCellDef="let solicitud">
+      {{ solicitud.fechaCreacion | date : "medium" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="constancia">
+    <th mat-header-cell *matHeaderCellDef>Constancia</th>
+    <td mat-cell *matCellDef="let solicitud">
+      <ng-container *ngIf="solicitud.estado == 0">
+        <span style="color: orange">Pendiente</span>
+      </ng-container>
+
+      <!-- si fue aprobado -->
+      <ng-container *ngIf="solicitud.estado == 1">
+        <button class="button-style" mat-button>Ver</button>
+      </ng-container>
+
+      <!-- rechazado -->
+      <ng-container *ngIf="solicitud.estado == 2">
+        <span style="color: red">N/A</span>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnasAMostrar; sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnasAMostrar"></tr>
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="8" style="color: red">
+      No se encontraron resultados.
+    </td>
+  </tr>
+</table>
+<mat-paginator
+  class="mat-elevation-z1"
+  [pageSizeOptions]="[5, 10, 20, 50]"
+  showFirstLastButtons
+  [length]="cantidadTotalRegistros"
+  [pageSize]="cantidadRegistrosAMostrar"
+  (page)="actualizarPaginacion($event)"
+>
+</mat-paginator>

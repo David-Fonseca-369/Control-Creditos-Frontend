@@ -1,0 +1,8 @@
+.tabla,
+mat-paginator {
+  width: 100%;
+}
+
+.tabla button {
+  margin-right: 1rem;
+}
